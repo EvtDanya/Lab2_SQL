@@ -1,0 +1,1649 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: deleteOnNextInsert(); Type: FUNCTION; Schema: public; Owner: danya
+--
+
+CREATE FUNCTION public."deleteOnNextInsert"() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$BEGIN
+	SELECT 1;
+END;$$;
+
+
+ALTER FUNCTION public."deleteOnNextInsert"() OWNER TO danya;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: category; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.category (
+    id_category integer NOT NULL,
+    category text NOT NULL
+);
+
+
+ALTER TABLE public.category OWNER TO syava;
+
+--
+-- Name: Category_id_category_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.category ALTER COLUMN id_category ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Category_id_category_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_dentist; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_dentist (
+    id_dentist integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_dentist OWNER TO syava;
+
+--
+-- Name: Conclusion Dentist_id_dentist_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_dentist ALTER COLUMN id_dentist ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion Dentist_id_dentist_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_lora; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_lora (
+    id_lora integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_lora OWNER TO syava;
+
+--
+-- Name: Conclusion Lora_id_lora_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_lora ALTER COLUMN id_lora ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion Lora_id_lora_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_neurologist; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_neurologist (
+    "id_ neurologist" integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_neurologist OWNER TO syava;
+
+--
+-- Name: Conclusion Neurologist_id_ neurologist_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_neurologist ALTER COLUMN "id_ neurologist" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion Neurologist_id_ neurologist_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_optometrist; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_optometrist (
+    id_optometrist integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_optometrist OWNER TO syava;
+
+--
+-- Name: Conclusion Optometrist_id_optometrist_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_optometrist ALTER COLUMN id_optometrist ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion Optometrist_id_optometrist_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_phycho_test; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_phycho_test (
+    "id_phychoTest" integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_phycho_test OWNER TO syava;
+
+--
+-- Name: Conclusion PhychoTest_id_phychoTest_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_phycho_test ALTER COLUMN "id_phychoTest" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion PhychoTest_id_phychoTest_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conclusion_surgeon; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.conclusion_surgeon (
+    id_surgeon integer NOT NULL,
+    conclusion text NOT NULL
+);
+
+
+ALTER TABLE public.conclusion_surgeon OWNER TO syava;
+
+--
+-- Name: Conclusion Surgeon_id_surgeon_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.conclusion_surgeon ALTER COLUMN id_surgeon ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Conclusion Surgeon_id_surgeon_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: deregistration; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.deregistration (
+    id_deregistration integer NOT NULL,
+    status boolean NOT NULL,
+    reason text NOT NULL,
+    "deregistrationDate" date NOT NULL
+);
+
+
+ALTER TABLE public.deregistration OWNER TO danya;
+
+--
+-- Name: Deregistration_id_accounting_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.deregistration ALTER COLUMN id_deregistration ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Deregistration_id_accounting_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: dossier; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.dossier (
+    id_dossier integer NOT NULL,
+    "id_familyType" integer NOT NULL,
+    "id_medicalConclusion" integer NOT NULL,
+    id_relative integer NOT NULL,
+    "id_persInf" integer NOT NULL,
+    "id_workStudy" integer NOT NULL,
+    suitability boolean NOT NULL,
+    id_deregistration integer NOT NULL,
+    id_ticket integer NOT NULL
+);
+
+
+ALTER TABLE public.dossier OWNER TO danya;
+
+--
+-- Name: Dossier_id_dossier_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.dossier ALTER COLUMN id_dossier ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Dossier_id_dossier_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: education; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.education (
+    id_education integer NOT NULL,
+    level text NOT NULL
+);
+
+
+ALTER TABLE public.education OWNER TO danya;
+
+--
+-- Name: Education_id_education_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.education ALTER COLUMN id_education ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Education_id_education_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: kinship; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.kinship (
+    id_kinship integer NOT NULL,
+    type text NOT NULL,
+    degree integer NOT NULL
+);
+
+
+ALTER TABLE public.kinship OWNER TO danya;
+
+--
+-- Name: Kinship_id_kinship_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.kinship ALTER COLUMN id_kinship ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Kinship_id_kinship_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: med_conclusion; Type: TABLE; Schema: public; Owner: syava
+--
+
+CREATE TABLE public.med_conclusion (
+    "id_medConclusion" integer NOT NULL,
+    "dateMedConclusion" date NOT NULL,
+    id_neurologist integer NOT NULL,
+    id_lora integer NOT NULL,
+    id_surgeon integer NOT NULL,
+    "id_phychoTest" integer NOT NULL,
+    id_dentist integer NOT NULL,
+    id_optometrist integer NOT NULL,
+    id_category integer NOT NULL
+);
+
+
+ALTER TABLE public.med_conclusion OWNER TO syava;
+
+--
+-- Name: Med Conclusion_id_medConclusion_seq; Type: SEQUENCE; Schema: public; Owner: syava
+--
+
+ALTER TABLE public.med_conclusion ALTER COLUMN "id_medConclusion" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Med Conclusion_id_medConclusion_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: relative; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.relative (
+    id_relative integer NOT NULL,
+    id_kinship integer NOT NULL,
+    id_education integer NOT NULL,
+    "id_persInf" integer NOT NULL
+);
+
+
+ALTER TABLE public.relative OWNER TO danya;
+
+--
+-- Name: Relative_id_relative_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.relative ALTER COLUMN id_relative ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."Relative_id_relative_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: address; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.address (
+    id_address integer NOT NULL,
+    region text NOT NULL,
+    city text NOT NULL,
+    area text NOT NULL,
+    street text NOT NULL,
+    house integer NOT NULL
+);
+
+
+ALTER TABLE public.address OWNER TO miha;
+
+--
+-- Name: address_id_address_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.address ALTER COLUMN id_address ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.address_id_address_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: call; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.call (
+    id_call integer NOT NULL,
+    "id_militaryUnit" integer NOT NULL,
+    "id_conscriptionSeason" integer NOT NULL,
+    "callDate" date NOT NULL
+);
+
+
+ALTER TABLE public.call OWNER TO miha;
+
+--
+-- Name: call_id_call_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.call ALTER COLUMN id_call ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.call_id_call_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conscript; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.conscript (
+    id_dossier integer NOT NULL,
+    id_call integer NOT NULL,
+    id_conscript integer NOT NULL
+);
+
+
+ALTER TABLE public.conscript OWNER TO miha;
+
+--
+-- Name: conscript_id_conscript_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.conscript ALTER COLUMN id_conscript ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.conscript_id_conscript_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: conscription_season; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.conscription_season (
+    "id_conscriptionSeason" integer NOT NULL,
+    name text NOT NULL,
+    year integer NOT NULL
+);
+
+
+ALTER TABLE public.conscription_season OWNER TO miha;
+
+--
+-- Name: conscription_season_id_conscriptionSeason_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.conscription_season ALTER COLUMN "id_conscriptionSeason" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."conscription_season_id_conscriptionSeason_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: criminal_records; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.criminal_records (
+    id_crime integer NOT NULL,
+    article text NOT NULL
+);
+
+
+ALTER TABLE public.criminal_records OWNER TO miha;
+
+--
+-- Name: criminal_records_id_crime_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.criminal_records ALTER COLUMN id_crime ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.criminal_records_id_crime_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: family_type; Type: TABLE; Schema: public; Owner: danya
+--
+
+CREATE TABLE public.family_type (
+    "id_familyType" integer NOT NULL,
+    "familyType" text NOT NULL
+);
+
+
+ALTER TABLE public.family_type OWNER TO danya;
+
+--
+-- Name: family_type_id_familyType_seq; Type: SEQUENCE; Schema: public; Owner: danya
+--
+
+ALTER TABLE public.family_type ALTER COLUMN "id_familyType" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."family_type_id_familyType_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: military_unit; Type: TABLE; Schema: public; Owner: miha
+--
+
+CREATE TABLE public.military_unit (
+    "id_militaryUnit" integer NOT NULL,
+    name text NOT NULL,
+    id_address integer NOT NULL
+);
+
+
+ALTER TABLE public.military_unit OWNER TO miha;
+
+--
+-- Name: military_unit_id_militaryUnit_seq; Type: SEQUENCE; Schema: public; Owner: miha
+--
+
+ALTER TABLE public.military_unit ALTER COLUMN "id_militaryUnit" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."military_unit_id_militaryUnit_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: nation; Type: TABLE; Schema: public; Owner: sema
+--
+
+CREATE TABLE public.nation (
+    id_nation integer NOT NULL,
+    nation text NOT NULL
+);
+
+
+ALTER TABLE public.nation OWNER TO sema;
+
+--
+-- Name: nation_id_nation_seq; Type: SEQUENCE; Schema: public; Owner: sema
+--
+
+ALTER TABLE public.nation ALTER COLUMN id_nation ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.nation_id_nation_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: pass_information; Type: TABLE; Schema: public; Owner: sema
+--
+
+CREATE TABLE public.pass_information (
+    id_pass integer NOT NULL,
+    seria integer NOT NULL,
+    number integer NOT NULL,
+    "receiptDate" date NOT NULL
+);
+
+
+ALTER TABLE public.pass_information OWNER TO sema;
+
+--
+-- Name: pass_information_id_pass_seq; Type: SEQUENCE; Schema: public; Owner: sema
+--
+
+ALTER TABLE public.pass_information ALTER COLUMN id_pass ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.pass_information_id_pass_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: personal_information; Type: TABLE; Schema: public; Owner: sema
+--
+
+CREATE TABLE public.personal_information (
+    "id_persInf" integer NOT NULL,
+    name text NOT NULL,
+    "bornDate" date NOT NULL,
+    id_address integer NOT NULL,
+    id_crime integer,
+    id_nation integer NOT NULL,
+    id_pass integer NOT NULL,
+    is_adopt boolean NOT NULL,
+    "contactInf" text NOT NULL
+);
+
+
+ALTER TABLE public.personal_information OWNER TO sema;
+
+--
+-- Name: personal_information_id_persInf_seq; Type: SEQUENCE; Schema: public; Owner: sema
+--
+
+ALTER TABLE public.personal_information ALTER COLUMN "id_persInf" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."personal_information_id_persInf_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: war_ticket; Type: TABLE; Schema: public; Owner: sema
+--
+
+CREATE TABLE public.war_ticket (
+    id_ticket integer NOT NULL,
+    "receiptDate" date NOT NULL,
+    seria text NOT NULL,
+    number integer NOT NULL,
+    rank text NOT NULL,
+    branch text NOT NULL,
+    status text NOT NULL
+);
+
+
+ALTER TABLE public.war_ticket OWNER TO sema;
+
+--
+-- Name: war_ticket_id_ticket_seq; Type: SEQUENCE; Schema: public; Owner: sema
+--
+
+ALTER TABLE public.war_ticket ALTER COLUMN id_ticket ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.war_ticket_id_ticket_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: work_study; Type: TABLE; Schema: public; Owner: sema
+--
+
+CREATE TABLE public.work_study (
+    "id_workStudy" integer NOT NULL,
+    organization text NOT NULL,
+    "positionDirection" text NOT NULL,
+    id_address integer NOT NULL,
+    "orgType" text NOT NULL,
+    is_accreditation boolean NOT NULL
+);
+
+
+ALTER TABLE public.work_study OWNER TO sema;
+
+--
+-- Name: work_study_id_workStudy_seq; Type: SEQUENCE; Schema: public; Owner: sema
+--
+
+ALTER TABLE public.work_study ALTER COLUMN "id_workStudy" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."work_study_id_workStudy_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.address (id_address, region, city, area, street, house) FROM stdin;
+2	Новосибирская область	Новосибирск	Ленинский	Крылова	12
+3	Новосибирская область	Новосибирск	Кировский	Рублева	54
+1	Новосибирская область\n	Новосибирск	Советский	Иванова	21
+4	Новосибирская область\n	Новосибирск	Калининский 	Дунаевского 	23
+5	Новосибирская область\n	Новосибирск	Центральный\n	Татарская\n	72
+6	Новосибирская область\n	Новосибирск	Центральный\n	Фрунзе	10
+7	Новосибирская область	Новосибирская	Ленинский	Проспект Карла Маркса	20
+8	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	52
+10	Новосибирская область	Новосибирск	Центральный\n	Фрунзе	23
+12	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	66
+9	Новосибирская область	Новосибирск	Центральный\n	Фрунзе	31
+11	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	21
+13	Новосибирская область	Новосибирск	Калининский 	Макаренко	16
+14	Новосибирская область	Новосибирск	Калининский 	Макаренко	7
+15	Новосибирская область	Новосибирск	Калининский 	Макаренко	19
+\.
+
+
+--
+-- Data for Name: call; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.call (id_call, "id_militaryUnit", "id_conscriptionSeason", "callDate") FROM stdin;
+2	3	1	2021-09-21
+3	2	2	2020-07-06
+4	1	3	2019-04-12
+\.
+
+
+--
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.category (id_category, category) FROM stdin;
+1	Б1
+2	А2
+3	А1
+\.
+
+
+--
+-- Data for Name: conclusion_dentist; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_dentist (id_dentist, conclusion) FROM stdin;
+1	А2
+2	Б3
+3	А1
+\.
+
+
+--
+-- Data for Name: conclusion_lora; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_lora (id_lora, conclusion) FROM stdin;
+1	А1
+2	В2
+3	Б1
+4	А3
+\.
+
+
+--
+-- Data for Name: conclusion_neurologist; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_neurologist ("id_ neurologist", conclusion) FROM stdin;
+1	В2
+2	А2
+3	Б2
+\.
+
+
+--
+-- Data for Name: conclusion_optometrist; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_optometrist (id_optometrist, conclusion) FROM stdin;
+1	А3
+2	А2
+3	А1
+\.
+
+
+--
+-- Data for Name: conclusion_phycho_test; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_phycho_test ("id_phychoTest", conclusion) FROM stdin;
+1	В3
+2	А1
+3	Б2
+\.
+
+
+--
+-- Data for Name: conclusion_surgeon; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.conclusion_surgeon (id_surgeon, conclusion) FROM stdin;
+1	Б1
+2	А3
+3	А1
+\.
+
+
+--
+-- Data for Name: conscript; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.conscript (id_dossier, id_call, id_conscript) FROM stdin;
+\.
+
+
+--
+-- Data for Name: conscription_season; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.conscription_season ("id_conscriptionSeason", name, year) FROM stdin;
+1	осень	2021
+2	лето	2020
+3	весна	2019
+\.
+
+
+--
+-- Data for Name: criminal_records; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.criminal_records (id_crime, article) FROM stdin;
+1	144
+2	111
+3	105
+4	228
+\.
+
+
+--
+-- Data for Name: deregistration; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.deregistration (id_deregistration, status, reason, "deregistrationDate") FROM stdin;
+\.
+
+
+--
+-- Data for Name: dossier; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.dossier (id_dossier, "id_familyType", "id_medicalConclusion", id_relative, "id_persInf", "id_workStudy", suitability, id_deregistration, id_ticket) FROM stdin;
+\.
+
+
+--
+-- Data for Name: education; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.education (id_education, level) FROM stdin;
+10	Высшее профессиональное
+11	Среднее профессиональное
+12	Среднее общее
+13	Основное
+\.
+
+
+--
+-- Data for Name: family_type; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.family_type ("id_familyType", "familyType") FROM stdin;
+1	полная семья
+2	неполная семья
+3	одиночка
+\.
+
+
+--
+-- Data for Name: kinship; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.kinship (id_kinship, type, degree) FROM stdin;
+1	тётя	2
+2	дядя	2
+3	отец	1
+4	мать	1
+5	бабушка\n	2
+6	дедушка	2
+7	брат	1
+\.
+
+
+--
+-- Data for Name: med_conclusion; Type: TABLE DATA; Schema: public; Owner: syava
+--
+
+COPY public.med_conclusion ("id_medConclusion", "dateMedConclusion", id_neurologist, id_lora, id_surgeon, "id_phychoTest", id_dentist, id_optometrist, id_category) FROM stdin;
+2	2021-03-21	1	1	1	1	1	1	1
+3	2020-08-17	2	2	2	2	2	2	2
+4	2021-09-30	3	3	3	3	3	3	3
+\.
+
+
+--
+-- Data for Name: military_unit; Type: TABLE DATA; Schema: public; Owner: miha
+--
+
+COPY public.military_unit ("id_militaryUnit", name, id_address) FROM stdin;
+1	Воинская часть 10808	5
+2	Воинская часть 3287	4
+3	Воинская часть 6903	6
+\.
+
+
+--
+-- Data for Name: nation; Type: TABLE DATA; Schema: public; Owner: sema
+--
+
+COPY public.nation (id_nation, nation) FROM stdin;
+1	узбек
+2	казах
+3	русский
+4	татарин
+5	бурят
+6	чеченец
+\.
+
+
+--
+-- Data for Name: pass_information; Type: TABLE DATA; Schema: public; Owner: sema
+--
+
+COPY public.pass_information (id_pass, seria, number, "receiptDate") FROM stdin;
+1	5029	879675	2017-09-20
+2	4057	345554	2019-01-08
+3	5013	348365	2018-11-03
+4	5034	243565	2018-07-25
+5	5018	856422	2017-10-10
+6	5020	123754	2017-11-11
+7	5017	465554	2020-09-09
+8	5019	453223	2019-02-06
+9	5018	124533	2018-05-06
+10	5017	124453	2017-02-02
+11	5016	574457	2020-02-20
+12	5017	345265	2019-03-14
+13	5017	547545	2019-02-12
+14	5021	456574	2019-05-05
+15	5021	658556	2019-08-08
+16	5022	658566	2018-02-23
+17	5023	768676	2018-11-10
+18	5023	436357	2017-09-03
+19	5018	435326	2017-01-05
+20	5017	123543	2017-02-02
+\.
+
+
+--
+-- Data for Name: personal_information; Type: TABLE DATA; Schema: public; Owner: sema
+--
+
+COPY public.personal_information ("id_persInf", name, "bornDate", id_address, id_crime, id_nation, id_pass, is_adopt, "contactInf") FROM stdin;
+1	Бобров Георгий Сергеевич	2003-08-21	3	\N	3	3	t	89112223344
+2	Соснов Глеб Александрович	2002-04-22	2	\N	2	2	f	89998887722
+3	Рульков Борис Гераклович	2003-09-11	1	\N	1	1	f	88005553535
+4	Сердцев Агап Павлович	2001-12-30	8	\N	2	6	f	89112384565
+5	Филлипов Артур Артёмович	2004-11-12	9	\N	1	5	f	89712899838
+6	Сусликов Руслан Борисович	2002-09-12	10	\N	1	4	f	89001127898
+7	Сусликов Борис Петрович	1975-04-21	10	1	1	7	f	89979909796
+8	Сусликова Анна Сергеевна	1977-09-28	10	\N	1	8	f	89007009080
+9	Филлипов Артём Николаевич	1970-11-11	9	\N	1	9	f	89199778968
+10	Филлипова Маргарита Аркадьевна	1975-08-01	9	\N	1	10	f	89991122773
+11	Рульков Геракл Андреевич	1971-07-08	1	\N	1	11	f	89612435674
+12	Рулькова Ефросинья Владленовна 	1978-09-25	1	\N	1	12	f	89138009070
+13	Соснова Антонина Альфредовна	1978-08-10	2	\N	2	17	f	89019023456
+18	Бобров Анатолий Васильевич	1966-09-11	3	\N	3	18	f	89173647784
+19	Боброва Анна Петровна	1969-09-23	3	\N	3	16	t	89089047636
+20	Соснов Александр Авраамович	1967-12-12	2	\N	2	15	f	89162273647
+21	Сердцев Павел Артурович	1968-11-21	8	\N	2	14	f	89976775544
+22	Серцева Белла Эдуардовна	1970-04-28	8	\N	2	13	f	89998887766
+\.
+
+
+--
+-- Data for Name: relative; Type: TABLE DATA; Schema: public; Owner: danya
+--
+
+COPY public.relative (id_relative, id_kinship, id_education, "id_persInf") FROM stdin;
+1	4	11	1
+2	3	10	1
+3	7	11	1
+7	3	11	1
+8	4	11	1
+9	2	12	1
+\.
+
+
+--
+-- Data for Name: war_ticket; Type: TABLE DATA; Schema: public; Owner: sema
+--
+
+COPY public.war_ticket (id_ticket, "receiptDate", seria, number, rank, branch, status) FROM stdin;
+1	2021-08-09	ЙФ	1097834	капитан	вдв	в запасе
+2	2020-03-12	КВ	1728354	лейтенант	танковые	пенсия
+3	2023-09-12	АМ	1233567	сержант\n	мотовойска	служит
+\.
+
+
+--
+-- Data for Name: work_study; Type: TABLE DATA; Schema: public; Owner: sema
+--
+
+COPY public.work_study ("id_workStudy", organization, "positionDirection", id_address, "orgType", is_accreditation) FROM stdin;
+2	НГТУ	информационная безопасность	7	высшее учебное заведение	t
+3	НГТУ	информационная безопасность	7	высшее учебное заведение	t
+4	НГТУ	информационная безопасность	7	высшее учебное заведение	t
+\.
+
+
+--
+-- Name: Category_id_category_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Category_id_category_seq"', 3, true);
+
+
+--
+-- Name: Conclusion Dentist_id_dentist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion Dentist_id_dentist_seq"', 3, true);
+
+
+--
+-- Name: Conclusion Lora_id_lora_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion Lora_id_lora_seq"', 4, true);
+
+
+--
+-- Name: Conclusion Neurologist_id_ neurologist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion Neurologist_id_ neurologist_seq"', 3, true);
+
+
+--
+-- Name: Conclusion Optometrist_id_optometrist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion Optometrist_id_optometrist_seq"', 3, true);
+
+
+--
+-- Name: Conclusion PhychoTest_id_phychoTest_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion PhychoTest_id_phychoTest_seq"', 3, true);
+
+
+--
+-- Name: Conclusion Surgeon_id_surgeon_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Conclusion Surgeon_id_surgeon_seq"', 3, true);
+
+
+--
+-- Name: Deregistration_id_accounting_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."Deregistration_id_accounting_seq"', 1, false);
+
+
+--
+-- Name: Dossier_id_dossier_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."Dossier_id_dossier_seq"', 1, false);
+
+
+--
+-- Name: Education_id_education_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."Education_id_education_seq"', 13, true);
+
+
+--
+-- Name: Kinship_id_kinship_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."Kinship_id_kinship_seq"', 7, true);
+
+
+--
+-- Name: Med Conclusion_id_medConclusion_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
+--
+
+SELECT pg_catalog.setval('public."Med Conclusion_id_medConclusion_seq"', 4, true);
+
+
+--
+-- Name: Relative_id_relative_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."Relative_id_relative_seq"', 9, true);
+
+
+--
+-- Name: address_id_address_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public.address_id_address_seq', 15, true);
+
+
+--
+-- Name: call_id_call_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public.call_id_call_seq', 4, true);
+
+
+--
+-- Name: conscript_id_conscript_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public.conscript_id_conscript_seq', 1, false);
+
+
+--
+-- Name: conscription_season_id_conscriptionSeason_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public."conscription_season_id_conscriptionSeason_seq"', 3, true);
+
+
+--
+-- Name: criminal_records_id_crime_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public.criminal_records_id_crime_seq', 4, true);
+
+
+--
+-- Name: family_type_id_familyType_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
+--
+
+SELECT pg_catalog.setval('public."family_type_id_familyType_seq"', 3, true);
+
+
+--
+-- Name: military_unit_id_militaryUnit_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
+--
+
+SELECT pg_catalog.setval('public."military_unit_id_militaryUnit_seq"', 3, true);
+
+
+--
+-- Name: nation_id_nation_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
+--
+
+SELECT pg_catalog.setval('public.nation_id_nation_seq', 6, true);
+
+
+--
+-- Name: pass_information_id_pass_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
+--
+
+SELECT pg_catalog.setval('public.pass_information_id_pass_seq', 20, true);
+
+
+--
+-- Name: personal_information_id_persInf_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
+--
+
+SELECT pg_catalog.setval('public."personal_information_id_persInf_seq"', 22, true);
+
+
+--
+-- Name: war_ticket_id_ticket_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
+--
+
+SELECT pg_catalog.setval('public.war_ticket_id_ticket_seq', 3, true);
+
+
+--
+-- Name: work_study_id_workStudy_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
+--
+
+SELECT pg_catalog.setval('public."work_study_id_workStudy_seq"', 4, true);
+
+
+--
+-- Name: address Address_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.address
+    ADD CONSTRAINT "Address_pkey" PRIMARY KEY (id_address);
+
+
+--
+-- Name: call Call_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.call
+    ADD CONSTRAINT "Call_pkey" PRIMARY KEY (id_call);
+
+
+--
+-- Name: category Category_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.category
+    ADD CONSTRAINT "Category_pkey" PRIMARY KEY (id_category);
+
+
+--
+-- Name: conclusion_dentist Conclusion Dentist_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_dentist
+    ADD CONSTRAINT "Conclusion Dentist_pkey" PRIMARY KEY (id_dentist);
+
+
+--
+-- Name: conclusion_lora Conclusion Lora_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_lora
+    ADD CONSTRAINT "Conclusion Lora_pkey" PRIMARY KEY (id_lora);
+
+
+--
+-- Name: conclusion_neurologist Conclusion Neurologist_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_neurologist
+    ADD CONSTRAINT "Conclusion Neurologist_pkey" PRIMARY KEY ("id_ neurologist");
+
+
+--
+-- Name: conclusion_optometrist Conclusion Optometrist_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_optometrist
+    ADD CONSTRAINT "Conclusion Optometrist_pkey" PRIMARY KEY (id_optometrist);
+
+
+--
+-- Name: conclusion_phycho_test Conclusion PhychoTest_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_phycho_test
+    ADD CONSTRAINT "Conclusion PhychoTest_pkey" PRIMARY KEY ("id_phychoTest");
+
+
+--
+-- Name: conclusion_surgeon Conclusion Surgeon_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.conclusion_surgeon
+    ADD CONSTRAINT "Conclusion Surgeon_pkey" PRIMARY KEY (id_surgeon);
+
+
+--
+-- Name: conscription_season ConscriptionSeason_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.conscription_season
+    ADD CONSTRAINT "ConscriptionSeason_pkey" PRIMARY KEY ("id_conscriptionSeason");
+
+
+--
+-- Name: criminal_records CriminalRecords_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.criminal_records
+    ADD CONSTRAINT "CriminalRecords_pkey" PRIMARY KEY (id_crime);
+
+
+--
+-- Name: deregistration Deregistration_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.deregistration
+    ADD CONSTRAINT "Deregistration_pkey" PRIMARY KEY (id_deregistration);
+
+
+--
+-- Name: dossier Dossier_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT "Dossier_pkey" PRIMARY KEY (id_dossier);
+
+
+--
+-- Name: education Education_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.education
+    ADD CONSTRAINT "Education_pkey" PRIMARY KEY (id_education);
+
+
+--
+-- Name: kinship Kinship_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.kinship
+    ADD CONSTRAINT "Kinship_pkey" PRIMARY KEY (id_kinship);
+
+
+--
+-- Name: med_conclusion Med Conclusion_pkey; Type: CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT "Med Conclusion_pkey" PRIMARY KEY ("id_medConclusion");
+
+
+--
+-- Name: military_unit MilitaryUnit_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.military_unit
+    ADD CONSTRAINT "MilitaryUnit_pkey" PRIMARY KEY ("id_militaryUnit");
+
+
+--
+-- Name: nation Nation_pkey; Type: CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.nation
+    ADD CONSTRAINT "Nation_pkey" PRIMARY KEY (id_nation);
+
+
+--
+-- Name: pass_information Pass infpormation_pkey; Type: CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.pass_information
+    ADD CONSTRAINT "Pass infpormation_pkey" PRIMARY KEY (id_pass);
+
+
+--
+-- Name: personal_information Personal Information_pkey; Type: CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.personal_information
+    ADD CONSTRAINT "Personal Information_pkey" PRIMARY KEY ("id_persInf");
+
+
+--
+-- Name: relative Relative_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.relative
+    ADD CONSTRAINT "Relative_pkey" PRIMARY KEY (id_relative);
+
+
+--
+-- Name: war_ticket War ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.war_ticket
+    ADD CONSTRAINT "War ticket_pkey" PRIMARY KEY (id_ticket);
+
+
+--
+-- Name: work_study Work/study_pkey; Type: CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.work_study
+    ADD CONSTRAINT "Work/study_pkey" PRIMARY KEY ("id_workStudy");
+
+
+--
+-- Name: conscript conscript_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.conscript
+    ADD CONSTRAINT conscript_pkey PRIMARY KEY (id_conscript);
+
+
+--
+-- Name: family_type family_type_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.family_type
+    ADD CONSTRAINT family_type_pkey PRIMARY KEY ("id_familyType");
+
+
+--
+-- Name: personal_information Personal Information_id_nation_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.personal_information
+    ADD CONSTRAINT "Personal Information_id_nation_fkey" FOREIGN KEY (id_nation) REFERENCES public.nation(id_nation) NOT VALID;
+
+
+--
+-- Name: personal_information Personal Information_id_pass_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.personal_information
+    ADD CONSTRAINT "Personal Information_id_pass_fkey" FOREIGN KEY (id_pass) REFERENCES public.pass_information(id_pass) NOT VALID;
+
+
+--
+-- Name: call call_id_conscriptionSeason_fkey; Type: FK CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.call
+    ADD CONSTRAINT "call_id_conscriptionSeason_fkey" FOREIGN KEY ("id_conscriptionSeason") REFERENCES public.conscription_season("id_conscriptionSeason");
+
+
+--
+-- Name: call call_id_militaryUnit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.call
+    ADD CONSTRAINT "call_id_militaryUnit_fkey" FOREIGN KEY ("id_militaryUnit") REFERENCES public.military_unit("id_militaryUnit");
+
+
+--
+-- Name: conscript conscript_id_call_fkey; Type: FK CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.conscript
+    ADD CONSTRAINT conscript_id_call_fkey FOREIGN KEY (id_call) REFERENCES public.call(id_call) NOT VALID;
+
+
+--
+-- Name: conscript conscript_id_dossier_fkey; Type: FK CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.conscript
+    ADD CONSTRAINT conscript_id_dossier_fkey FOREIGN KEY (id_dossier) REFERENCES public.dossier(id_dossier) NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_deregistration_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT dossier_id_deregistration_fkey FOREIGN KEY (id_deregistration) REFERENCES public.deregistration(id_deregistration) NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_familyType_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT "dossier_id_familyType_fkey" FOREIGN KEY ("id_familyType") REFERENCES public.family_type("id_familyType") NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_medicalReport_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT "dossier_id_medicalReport_fkey" FOREIGN KEY ("id_medicalConclusion") REFERENCES public.med_conclusion("id_medConclusion") NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_persInf_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT "dossier_id_persInf_fkey" FOREIGN KEY ("id_persInf") REFERENCES public.personal_information("id_persInf") NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_relative_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT dossier_id_relative_fkey FOREIGN KEY (id_relative) REFERENCES public.relative(id_relative) NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_ticket_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT dossier_id_ticket_fkey FOREIGN KEY (id_ticket) REFERENCES public.war_ticket(id_ticket) NOT VALID;
+
+
+--
+-- Name: dossier dossier_id_workStudy_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.dossier
+    ADD CONSTRAINT "dossier_id_workStudy_fkey" FOREIGN KEY ("id_workStudy") REFERENCES public.work_study("id_workStudy") NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_category_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_category_fkey FOREIGN KEY (id_category) REFERENCES public.category(id_category) NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_dentist_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_dentist_fkey FOREIGN KEY (id_dentist) REFERENCES public.conclusion_dentist(id_dentist) NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_lora_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_lora_fkey FOREIGN KEY (id_lora) REFERENCES public.conclusion_lora(id_lora) NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_neurologist_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_neurologist_fkey FOREIGN KEY (id_neurologist) REFERENCES public.conclusion_neurologist("id_ neurologist") NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_optometrist_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_optometrist_fkey FOREIGN KEY (id_optometrist) REFERENCES public.conclusion_optometrist(id_optometrist) NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_phychoTest_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT "med_conclusion_id_phychoTest_fkey" FOREIGN KEY ("id_phychoTest") REFERENCES public.conclusion_phycho_test("id_phychoTest") NOT VALID;
+
+
+--
+-- Name: med_conclusion med_conclusion_id_surgeon_fkey; Type: FK CONSTRAINT; Schema: public; Owner: syava
+--
+
+ALTER TABLE ONLY public.med_conclusion
+    ADD CONSTRAINT med_conclusion_id_surgeon_fkey FOREIGN KEY (id_surgeon) REFERENCES public.conclusion_surgeon(id_surgeon) NOT VALID;
+
+
+--
+-- Name: military_unit military_unit_id_address_fkey; Type: FK CONSTRAINT; Schema: public; Owner: miha
+--
+
+ALTER TABLE ONLY public.military_unit
+    ADD CONSTRAINT military_unit_id_address_fkey FOREIGN KEY (id_address) REFERENCES public.address(id_address) NOT VALID;
+
+
+--
+-- Name: personal_information personal_information_id_address_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.personal_information
+    ADD CONSTRAINT personal_information_id_address_fkey FOREIGN KEY (id_address) REFERENCES public.address(id_address) NOT VALID;
+
+
+--
+-- Name: personal_information personal_information_id_crime_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.personal_information
+    ADD CONSTRAINT personal_information_id_crime_fkey FOREIGN KEY (id_crime) REFERENCES public.criminal_records(id_crime) NOT VALID;
+
+
+--
+-- Name: relative relative_id_education_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.relative
+    ADD CONSTRAINT relative_id_education_fkey FOREIGN KEY (id_education) REFERENCES public.education(id_education) NOT VALID;
+
+
+--
+-- Name: relative relative_id_kinship_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.relative
+    ADD CONSTRAINT relative_id_kinship_fkey FOREIGN KEY (id_kinship) REFERENCES public.kinship(id_kinship) NOT VALID;
+
+
+--
+-- Name: relative relative_id_persInf_fkey; Type: FK CONSTRAINT; Schema: public; Owner: danya
+--
+
+ALTER TABLE ONLY public.relative
+    ADD CONSTRAINT "relative_id_persInf_fkey" FOREIGN KEY ("id_persInf") REFERENCES public.personal_information("id_persInf") NOT VALID;
+
+
+--
+-- Name: work_study work_study_id_address_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sema
+--
+
+ALTER TABLE ONLY public.work_study
+    ADD CONSTRAINT work_study_id_address_fkey FOREIGN KEY (id_address) REFERENCES public.address(id_address) NOT VALID;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
