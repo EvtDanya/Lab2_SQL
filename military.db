@@ -16,19 +16,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: deleteOnNextInsert(); Type: FUNCTION; Schema: public; Owner: danya
---
-
-CREATE FUNCTION public."deleteOnNextInsert"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$BEGIN
-	SELECT 1;
-END;$$;
-
-
-ALTER FUNCTION public."deleteOnNextInsert"() OWNER TO danya;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -195,7 +182,7 @@ ALTER TABLE public.conclusion_phycho_test ALTER COLUMN "id_phychoTest" ADD GENER
 
 CREATE TABLE public.conclusion_surgeon (
     id_surgeon integer NOT NULL,
-    conclusion text NOT NULL
+    conclusion integer NOT NULL
 );
 
 
@@ -407,20 +394,6 @@ CREATE TABLE public.address (
 ALTER TABLE public.address OWNER TO miha;
 
 --
--- Name: address_id_address_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.address ALTER COLUMN id_address ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.address_id_address_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Name: call; Type: TABLE; Schema: public; Owner: miha
 --
 
@@ -435,45 +408,16 @@ CREATE TABLE public.call (
 ALTER TABLE public.call OWNER TO miha;
 
 --
--- Name: call_id_call_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.call ALTER COLUMN id_call ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.call_id_call_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Name: conscript; Type: TABLE; Schema: public; Owner: miha
 --
 
 CREATE TABLE public.conscript (
     id_dossier integer NOT NULL,
-    id_call integer NOT NULL,
-    id_conscript integer NOT NULL
+    id_call integer NOT NULL
 );
 
 
 ALTER TABLE public.conscript OWNER TO miha;
-
---
--- Name: conscript_id_conscript_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.conscript ALTER COLUMN id_conscript ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.conscript_id_conscript_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
 
 --
 -- Name: conscription_season; Type: TABLE; Schema: public; Owner: miha
@@ -489,20 +433,6 @@ CREATE TABLE public.conscription_season (
 ALTER TABLE public.conscription_season OWNER TO miha;
 
 --
--- Name: conscription_season_id_conscriptionSeason_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.conscription_season ALTER COLUMN "id_conscriptionSeason" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."conscription_season_id_conscriptionSeason_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Name: criminal_records; Type: TABLE; Schema: public; Owner: miha
 --
 
@@ -513,20 +443,6 @@ CREATE TABLE public.criminal_records (
 
 
 ALTER TABLE public.criminal_records OWNER TO miha;
-
---
--- Name: criminal_records_id_crime_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.criminal_records ALTER COLUMN id_crime ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.criminal_records_id_crime_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
 
 --
 -- Name: family_type; Type: TABLE; Schema: public; Owner: danya
@@ -568,20 +484,6 @@ CREATE TABLE public.military_unit (
 ALTER TABLE public.military_unit OWNER TO miha;
 
 --
--- Name: military_unit_id_militaryUnit_seq; Type: SEQUENCE; Schema: public; Owner: miha
---
-
-ALTER TABLE public.military_unit ALTER COLUMN "id_militaryUnit" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."military_unit_id_militaryUnit_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Name: nation; Type: TABLE; Schema: public; Owner: sema
 --
 
@@ -592,20 +494,6 @@ CREATE TABLE public.nation (
 
 
 ALTER TABLE public.nation OWNER TO sema;
-
---
--- Name: nation_id_nation_seq; Type: SEQUENCE; Schema: public; Owner: sema
---
-
-ALTER TABLE public.nation ALTER COLUMN id_nation ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.nation_id_nation_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
 
 --
 -- Name: pass_information; Type: TABLE; Schema: public; Owner: sema
@@ -622,20 +510,6 @@ CREATE TABLE public.pass_information (
 ALTER TABLE public.pass_information OWNER TO sema;
 
 --
--- Name: pass_information_id_pass_seq; Type: SEQUENCE; Schema: public; Owner: sema
---
-
-ALTER TABLE public.pass_information ALTER COLUMN id_pass ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.pass_information_id_pass_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Name: personal_information; Type: TABLE; Schema: public; Owner: sema
 --
 
@@ -644,29 +518,15 @@ CREATE TABLE public.personal_information (
     name text NOT NULL,
     "bornDate" date NOT NULL,
     id_address integer NOT NULL,
-    id_crime integer,
+    "contactInf" integer NOT NULL,
+    id_crime integer NOT NULL,
     id_nation integer NOT NULL,
     id_pass integer NOT NULL,
-    is_adopt boolean NOT NULL,
-    "contactInf" text NOT NULL
+    is_adopt boolean NOT NULL
 );
 
 
 ALTER TABLE public.personal_information OWNER TO sema;
-
---
--- Name: personal_information_id_persInf_seq; Type: SEQUENCE; Schema: public; Owner: sema
---
-
-ALTER TABLE public.personal_information ALTER COLUMN "id_persInf" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."personal_information_id_persInf_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
 
 --
 -- Name: war_ticket; Type: TABLE; Schema: public; Owner: sema
@@ -675,29 +535,15 @@ ALTER TABLE public.personal_information ALTER COLUMN "id_persInf" ADD GENERATED 
 CREATE TABLE public.war_ticket (
     id_ticket integer NOT NULL,
     "receiptDate" date NOT NULL,
-    seria text NOT NULL,
+    seria integer NOT NULL,
     number integer NOT NULL,
-    rank text NOT NULL,
+    status text NOT NULL,
     branch text NOT NULL,
-    status text NOT NULL
+    rank text NOT NULL
 );
 
 
 ALTER TABLE public.war_ticket OWNER TO sema;
-
---
--- Name: war_ticket_id_ticket_seq; Type: SEQUENCE; Schema: public; Owner: sema
---
-
-ALTER TABLE public.war_ticket ALTER COLUMN id_ticket ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.war_ticket_id_ticket_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
 
 --
 -- Name: work_study; Type: TABLE; Schema: public; Owner: sema
@@ -716,39 +562,10 @@ CREATE TABLE public.work_study (
 ALTER TABLE public.work_study OWNER TO sema;
 
 --
--- Name: work_study_id_workStudy_seq; Type: SEQUENCE; Schema: public; Owner: sema
---
-
-ALTER TABLE public.work_study ALTER COLUMN "id_workStudy" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."work_study_id_workStudy_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
 -- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: miha
 --
 
 COPY public.address (id_address, region, city, area, street, house) FROM stdin;
-2	Новосибирская область	Новосибирск	Ленинский	Крылова	12
-3	Новосибирская область	Новосибирск	Кировский	Рублева	54
-1	Новосибирская область\n	Новосибирск	Советский	Иванова	21
-4	Новосибирская область\n	Новосибирск	Калининский 	Дунаевского 	23
-5	Новосибирская область\n	Новосибирск	Центральный\n	Татарская\n	72
-6	Новосибирская область\n	Новосибирск	Центральный\n	Фрунзе	10
-7	Новосибирская область	Новосибирская	Ленинский	Проспект Карла Маркса	20
-8	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	52
-10	Новосибирская область	Новосибирск	Центральный\n	Фрунзе	23
-12	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	66
-9	Новосибирская область	Новосибирск	Центральный\n	Фрунзе	31
-11	Новосибирская область	Новосибирск	Центральный\n	Демьяна Бедного	21
-13	Новосибирская область	Новосибирск	Калининский 	Макаренко	16
-14	Новосибирская область	Новосибирск	Калининский 	Макаренко	7
-15	Новосибирская область	Новосибирск	Калининский 	Макаренко	19
 \.
 
 
@@ -757,9 +574,6 @@ COPY public.address (id_address, region, city, area, street, house) FROM stdin;
 --
 
 COPY public.call (id_call, "id_militaryUnit", "id_conscriptionSeason", "callDate") FROM stdin;
-2	3	1	2021-09-21
-3	2	2	2020-07-06
-4	1	3	2019-04-12
 \.
 
 
@@ -768,9 +582,6 @@ COPY public.call (id_call, "id_militaryUnit", "id_conscriptionSeason", "callDate
 --
 
 COPY public.category (id_category, category) FROM stdin;
-1	Б1
-2	А2
-3	А1
 \.
 
 
@@ -779,9 +590,6 @@ COPY public.category (id_category, category) FROM stdin;
 --
 
 COPY public.conclusion_dentist (id_dentist, conclusion) FROM stdin;
-1	А2
-2	Б3
-3	А1
 \.
 
 
@@ -790,10 +598,6 @@ COPY public.conclusion_dentist (id_dentist, conclusion) FROM stdin;
 --
 
 COPY public.conclusion_lora (id_lora, conclusion) FROM stdin;
-1	А1
-2	В2
-3	Б1
-4	А3
 \.
 
 
@@ -802,9 +606,6 @@ COPY public.conclusion_lora (id_lora, conclusion) FROM stdin;
 --
 
 COPY public.conclusion_neurologist ("id_ neurologist", conclusion) FROM stdin;
-1	В2
-2	А2
-3	Б2
 \.
 
 
@@ -813,9 +614,6 @@ COPY public.conclusion_neurologist ("id_ neurologist", conclusion) FROM stdin;
 --
 
 COPY public.conclusion_optometrist (id_optometrist, conclusion) FROM stdin;
-1	А3
-2	А2
-3	А1
 \.
 
 
@@ -824,9 +622,6 @@ COPY public.conclusion_optometrist (id_optometrist, conclusion) FROM stdin;
 --
 
 COPY public.conclusion_phycho_test ("id_phychoTest", conclusion) FROM stdin;
-1	В3
-2	А1
-3	Б2
 \.
 
 
@@ -835,9 +630,6 @@ COPY public.conclusion_phycho_test ("id_phychoTest", conclusion) FROM stdin;
 --
 
 COPY public.conclusion_surgeon (id_surgeon, conclusion) FROM stdin;
-1	Б1
-2	А3
-3	А1
 \.
 
 
@@ -845,7 +637,7 @@ COPY public.conclusion_surgeon (id_surgeon, conclusion) FROM stdin;
 -- Data for Name: conscript; Type: TABLE DATA; Schema: public; Owner: miha
 --
 
-COPY public.conscript (id_dossier, id_call, id_conscript) FROM stdin;
+COPY public.conscript (id_dossier, id_call) FROM stdin;
 \.
 
 
@@ -854,9 +646,6 @@ COPY public.conscript (id_dossier, id_call, id_conscript) FROM stdin;
 --
 
 COPY public.conscription_season ("id_conscriptionSeason", name, year) FROM stdin;
-1	осень	2021
-2	лето	2020
-3	весна	2019
 \.
 
 
@@ -865,10 +654,6 @@ COPY public.conscription_season ("id_conscriptionSeason", name, year) FROM stdin
 --
 
 COPY public.criminal_records (id_crime, article) FROM stdin;
-1	144
-2	111
-3	105
-4	228
 \.
 
 
@@ -893,10 +678,6 @@ COPY public.dossier (id_dossier, "id_familyType", "id_medicalConclusion", id_rel
 --
 
 COPY public.education (id_education, level) FROM stdin;
-10	Высшее профессиональное
-11	Среднее профессиональное
-12	Среднее общее
-13	Основное
 \.
 
 
@@ -905,9 +686,6 @@ COPY public.education (id_education, level) FROM stdin;
 --
 
 COPY public.family_type ("id_familyType", "familyType") FROM stdin;
-1	полная семья
-2	неполная семья
-3	одиночка
 \.
 
 
@@ -916,13 +694,6 @@ COPY public.family_type ("id_familyType", "familyType") FROM stdin;
 --
 
 COPY public.kinship (id_kinship, type, degree) FROM stdin;
-1	тётя	2
-2	дядя	2
-3	отец	1
-4	мать	1
-5	бабушка\n	2
-6	дедушка	2
-7	брат	1
 \.
 
 
@@ -931,9 +702,6 @@ COPY public.kinship (id_kinship, type, degree) FROM stdin;
 --
 
 COPY public.med_conclusion ("id_medConclusion", "dateMedConclusion", id_neurologist, id_lora, id_surgeon, "id_phychoTest", id_dentist, id_optometrist, id_category) FROM stdin;
-2	2021-03-21	1	1	1	1	1	1	1
-3	2020-08-17	2	2	2	2	2	2	2
-4	2021-09-30	3	3	3	3	3	3	3
 \.
 
 
@@ -942,9 +710,6 @@ COPY public.med_conclusion ("id_medConclusion", "dateMedConclusion", id_neurolog
 --
 
 COPY public.military_unit ("id_militaryUnit", name, id_address) FROM stdin;
-1	Воинская часть 10808	5
-2	Воинская часть 3287	4
-3	Воинская часть 6903	6
 \.
 
 
@@ -953,12 +718,6 @@ COPY public.military_unit ("id_militaryUnit", name, id_address) FROM stdin;
 --
 
 COPY public.nation (id_nation, nation) FROM stdin;
-1	узбек
-2	казах
-3	русский
-4	татарин
-5	бурят
-6	чеченец
 \.
 
 
@@ -967,26 +726,6 @@ COPY public.nation (id_nation, nation) FROM stdin;
 --
 
 COPY public.pass_information (id_pass, seria, number, "receiptDate") FROM stdin;
-1	5029	879675	2017-09-20
-2	4057	345554	2019-01-08
-3	5013	348365	2018-11-03
-4	5034	243565	2018-07-25
-5	5018	856422	2017-10-10
-6	5020	123754	2017-11-11
-7	5017	465554	2020-09-09
-8	5019	453223	2019-02-06
-9	5018	124533	2018-05-06
-10	5017	124453	2017-02-02
-11	5016	574457	2020-02-20
-12	5017	345265	2019-03-14
-13	5017	547545	2019-02-12
-14	5021	456574	2019-05-05
-15	5021	658556	2019-08-08
-16	5022	658566	2018-02-23
-17	5023	768676	2018-11-10
-18	5023	436357	2017-09-03
-19	5018	435326	2017-01-05
-20	5017	123543	2017-02-02
 \.
 
 
@@ -994,25 +733,7 @@ COPY public.pass_information (id_pass, seria, number, "receiptDate") FROM stdin;
 -- Data for Name: personal_information; Type: TABLE DATA; Schema: public; Owner: sema
 --
 
-COPY public.personal_information ("id_persInf", name, "bornDate", id_address, id_crime, id_nation, id_pass, is_adopt, "contactInf") FROM stdin;
-1	Бобров Георгий Сергеевич	2003-08-21	3	\N	3	3	t	89112223344
-2	Соснов Глеб Александрович	2002-04-22	2	\N	2	2	f	89998887722
-3	Рульков Борис Гераклович	2003-09-11	1	\N	1	1	f	88005553535
-4	Сердцев Агап Павлович	2001-12-30	8	\N	2	6	f	89112384565
-5	Филлипов Артур Артёмович	2004-11-12	9	\N	1	5	f	89712899838
-6	Сусликов Руслан Борисович	2002-09-12	10	\N	1	4	f	89001127898
-7	Сусликов Борис Петрович	1975-04-21	10	1	1	7	f	89979909796
-8	Сусликова Анна Сергеевна	1977-09-28	10	\N	1	8	f	89007009080
-9	Филлипов Артём Николаевич	1970-11-11	9	\N	1	9	f	89199778968
-10	Филлипова Маргарита Аркадьевна	1975-08-01	9	\N	1	10	f	89991122773
-11	Рульков Геракл Андреевич	1971-07-08	1	\N	1	11	f	89612435674
-12	Рулькова Ефросинья Владленовна 	1978-09-25	1	\N	1	12	f	89138009070
-13	Соснова Антонина Альфредовна	1978-08-10	2	\N	2	17	f	89019023456
-18	Бобров Анатолий Васильевич	1966-09-11	3	\N	3	18	f	89173647784
-19	Боброва Анна Петровна	1969-09-23	3	\N	3	16	t	89089047636
-20	Соснов Александр Авраамович	1967-12-12	2	\N	2	15	f	89162273647
-21	Сердцев Павел Артурович	1968-11-21	8	\N	2	14	f	89976775544
-22	Серцева Белла Эдуардовна	1970-04-28	8	\N	2	13	f	89998887766
+COPY public.personal_information ("id_persInf", name, "bornDate", id_address, "contactInf", id_crime, id_nation, id_pass, is_adopt) FROM stdin;
 \.
 
 
@@ -1021,12 +742,6 @@ COPY public.personal_information ("id_persInf", name, "bornDate", id_address, id
 --
 
 COPY public.relative (id_relative, id_kinship, id_education, "id_persInf") FROM stdin;
-1	4	11	1
-2	3	10	1
-3	7	11	1
-7	3	11	1
-8	4	11	1
-9	2	12	1
 \.
 
 
@@ -1034,10 +749,7 @@ COPY public.relative (id_relative, id_kinship, id_education, "id_persInf") FROM 
 -- Data for Name: war_ticket; Type: TABLE DATA; Schema: public; Owner: sema
 --
 
-COPY public.war_ticket (id_ticket, "receiptDate", seria, number, rank, branch, status) FROM stdin;
-1	2021-08-09	ЙФ	1097834	капитан	вдв	в запасе
-2	2020-03-12	КВ	1728354	лейтенант	танковые	пенсия
-3	2023-09-12	АМ	1233567	сержант\n	мотовойска	служит
+COPY public.war_ticket (id_ticket, "receiptDate", seria, number, status, branch, rank) FROM stdin;
 \.
 
 
@@ -1046,9 +758,6 @@ COPY public.war_ticket (id_ticket, "receiptDate", seria, number, rank, branch, s
 --
 
 COPY public.work_study ("id_workStudy", organization, "positionDirection", id_address, "orgType", is_accreditation) FROM stdin;
-2	НГТУ	информационная безопасность	7	высшее учебное заведение	t
-3	НГТУ	информационная безопасность	7	высшее учебное заведение	t
-4	НГТУ	информационная безопасность	7	высшее учебное заведение	t
 \.
 
 
@@ -1056,49 +765,49 @@ COPY public.work_study ("id_workStudy", organization, "positionDirection", id_ad
 -- Name: Category_id_category_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Category_id_category_seq"', 3, true);
+SELECT pg_catalog.setval('public."Category_id_category_seq"', 1, false);
 
 
 --
 -- Name: Conclusion Dentist_id_dentist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion Dentist_id_dentist_seq"', 3, true);
+SELECT pg_catalog.setval('public."Conclusion Dentist_id_dentist_seq"', 1, false);
 
 
 --
 -- Name: Conclusion Lora_id_lora_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion Lora_id_lora_seq"', 4, true);
+SELECT pg_catalog.setval('public."Conclusion Lora_id_lora_seq"', 1, false);
 
 
 --
 -- Name: Conclusion Neurologist_id_ neurologist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion Neurologist_id_ neurologist_seq"', 3, true);
+SELECT pg_catalog.setval('public."Conclusion Neurologist_id_ neurologist_seq"', 1, false);
 
 
 --
 -- Name: Conclusion Optometrist_id_optometrist_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion Optometrist_id_optometrist_seq"', 3, true);
+SELECT pg_catalog.setval('public."Conclusion Optometrist_id_optometrist_seq"', 1, false);
 
 
 --
 -- Name: Conclusion PhychoTest_id_phychoTest_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion PhychoTest_id_phychoTest_seq"', 3, true);
+SELECT pg_catalog.setval('public."Conclusion PhychoTest_id_phychoTest_seq"', 1, false);
 
 
 --
 -- Name: Conclusion Surgeon_id_surgeon_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Conclusion Surgeon_id_surgeon_seq"', 3, true);
+SELECT pg_catalog.setval('public."Conclusion Surgeon_id_surgeon_seq"', 1, false);
 
 
 --
@@ -1119,112 +828,35 @@ SELECT pg_catalog.setval('public."Dossier_id_dossier_seq"', 1, false);
 -- Name: Education_id_education_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
 --
 
-SELECT pg_catalog.setval('public."Education_id_education_seq"', 13, true);
+SELECT pg_catalog.setval('public."Education_id_education_seq"', 1, false);
 
 
 --
 -- Name: Kinship_id_kinship_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
 --
 
-SELECT pg_catalog.setval('public."Kinship_id_kinship_seq"', 7, true);
+SELECT pg_catalog.setval('public."Kinship_id_kinship_seq"', 1, false);
 
 
 --
 -- Name: Med Conclusion_id_medConclusion_seq; Type: SEQUENCE SET; Schema: public; Owner: syava
 --
 
-SELECT pg_catalog.setval('public."Med Conclusion_id_medConclusion_seq"', 4, true);
+SELECT pg_catalog.setval('public."Med Conclusion_id_medConclusion_seq"', 1, false);
 
 
 --
 -- Name: Relative_id_relative_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
 --
 
-SELECT pg_catalog.setval('public."Relative_id_relative_seq"', 9, true);
-
-
---
--- Name: address_id_address_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public.address_id_address_seq', 15, true);
-
-
---
--- Name: call_id_call_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public.call_id_call_seq', 4, true);
-
-
---
--- Name: conscript_id_conscript_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public.conscript_id_conscript_seq', 1, false);
-
-
---
--- Name: conscription_season_id_conscriptionSeason_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public."conscription_season_id_conscriptionSeason_seq"', 3, true);
-
-
---
--- Name: criminal_records_id_crime_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public.criminal_records_id_crime_seq', 4, true);
+SELECT pg_catalog.setval('public."Relative_id_relative_seq"', 1, false);
 
 
 --
 -- Name: family_type_id_familyType_seq; Type: SEQUENCE SET; Schema: public; Owner: danya
 --
 
-SELECT pg_catalog.setval('public."family_type_id_familyType_seq"', 3, true);
-
-
---
--- Name: military_unit_id_militaryUnit_seq; Type: SEQUENCE SET; Schema: public; Owner: miha
---
-
-SELECT pg_catalog.setval('public."military_unit_id_militaryUnit_seq"', 3, true);
-
-
---
--- Name: nation_id_nation_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
---
-
-SELECT pg_catalog.setval('public.nation_id_nation_seq', 6, true);
-
-
---
--- Name: pass_information_id_pass_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
---
-
-SELECT pg_catalog.setval('public.pass_information_id_pass_seq', 20, true);
-
-
---
--- Name: personal_information_id_persInf_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
---
-
-SELECT pg_catalog.setval('public."personal_information_id_persInf_seq"', 22, true);
-
-
---
--- Name: war_ticket_id_ticket_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
---
-
-SELECT pg_catalog.setval('public.war_ticket_id_ticket_seq', 3, true);
-
-
---
--- Name: work_study_id_workStudy_seq; Type: SEQUENCE SET; Schema: public; Owner: sema
---
-
-SELECT pg_catalog.setval('public."work_study_id_workStudy_seq"', 4, true);
+SELECT pg_catalog.setval('public."family_type_id_familyType_seq"', 1, false);
 
 
 --
@@ -1412,14 +1044,6 @@ ALTER TABLE ONLY public.work_study
 
 
 --
--- Name: conscript conscript_pkey; Type: CONSTRAINT; Schema: public; Owner: miha
---
-
-ALTER TABLE ONLY public.conscript
-    ADD CONSTRAINT conscript_pkey PRIMARY KEY (id_conscript);
-
-
---
 -- Name: family_type family_type_pkey; Type: CONSTRAINT; Schema: public; Owner: danya
 --
 
@@ -1448,7 +1072,7 @@ ALTER TABLE ONLY public.personal_information
 --
 
 ALTER TABLE ONLY public.call
-    ADD CONSTRAINT "call_id_conscriptionSeason_fkey" FOREIGN KEY ("id_conscriptionSeason") REFERENCES public.conscription_season("id_conscriptionSeason");
+    ADD CONSTRAINT "call_id_conscriptionSeason_fkey" FOREIGN KEY ("id_conscriptionSeason") REFERENCES public.conscription_season("id_conscriptionSeason") NOT VALID;
 
 
 --
@@ -1456,7 +1080,7 @@ ALTER TABLE ONLY public.call
 --
 
 ALTER TABLE ONLY public.call
-    ADD CONSTRAINT "call_id_militaryUnit_fkey" FOREIGN KEY ("id_militaryUnit") REFERENCES public.military_unit("id_militaryUnit");
+    ADD CONSTRAINT "call_id_militaryUnit_fkey" FOREIGN KEY ("id_militaryUnit") REFERENCES public.military_unit("id_militaryUnit") NOT VALID;
 
 
 --
